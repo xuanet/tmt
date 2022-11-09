@@ -4,12 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.*;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button button;
+    private Button button2;
+    private String firstName;
+    private String lastName;
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +30,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        button2 = (Button) findViewById(R.id.Clock);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openStopwatch();
+            }
+        });
     }
 
     public void openTMT() {
         Intent intent = new Intent(this, tmt.class);
+        startActivity(intent);
+    }
+
+    public void openStopwatch() {
+        Intent intent = new Intent(this, Stopwatch.class);
         startActivity(intent);
     }
 
@@ -44,6 +62,20 @@ public class MainActivity extends AppCompatActivity {
         txtFirstName.setText("First Name: " + edtTxtFirstName.getText().toString());
         txtLastName.setText("Last Name: " + edtTxtLastName.getText().toString());
         txtEmail.setText("Email: " + edtTxtEmail.getText().toString());
+
+        firstName = edtTxtFirstName.getText().toString();
+        lastName = edtTxtLastName.getText().toString();
+        email = edtTxtEmail.getText().toString();
+
+        Log.i("tag", firstName);
+        Log.i("tag", lastName);
+        Log.i("tag", email);
+
+        Display mdisp = getWindowManager().getDefaultDisplay();
+        int maxX = mdisp.getWidth();
+        int maxY = mdisp.getHeight();
+        Log.i("tag", String.valueOf(maxX));
+        Log.i("tag", String.valueOf(maxY));
 
     }
 }

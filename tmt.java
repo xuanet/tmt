@@ -3,14 +3,32 @@ package com.example.trailmakingtest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.*;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.*;
+import android.widget.Button;
 
 public class tmt extends AppCompatActivity {
 
     DrawingView dv ;
     private Paint mPaint;
+    public long startTime;
+    public long endTime;
+    private Button button;
+
+
+
+    public void openTMT() {
+        Intent intent = new Intent(this, tmt.class);
+        startActivity(intent);
+    }
+
+    public void onStartClick(View view) {
+        startTime = SystemClock.elapsedRealtime();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
